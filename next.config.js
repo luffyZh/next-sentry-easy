@@ -1,25 +1,18 @@
-const withSourceMaps = require('@zeit/next-source-maps')()
+const withSourceMaps = require('@zeit/next-source-maps');
 
 module.exports = withSourceMaps({
   webpack: (config, options) => {
-    // In `pages/_app.js`, Sentry is imported from @sentry/node. While
-    // @sentry/browser will run in a Node.js environment, @sentry/node will use
-    // Node.js-only APIs to catch even more unhandled exceptions.
-    //
-    // This works well when Next.js is SSRing your page on a server with
-    // Node.js, but it is not what we want when your client-side bundle is being
-    // executed by a browser.
-    //
-    // Luckily, Next.js will call this webpack function twice, once for the
-    // server and once for the client. Read more:
-    // https://nextjs.org/docs#customizing-webpack-config
-    //
-    // So ask Webpack to replace @sentry/node imports with @sentry/browser when
-    // building the browser's bundle
+    /**
+     * 在 _app.js 引入 @sentry/node 包，当项目运行的时候，如果是 SSR 渲染，
+     * 则运行环境是 Node.js，而如果是客户端异常，也就是运行在浏览器端的时候，
+     * 使用 webpack 将 @sentry/node 替换为 @sentry/browser
+     * 可行的原因是因为 Next.js 的独特执行机制，它会在 server 端和 client 端
+     * 分别运行一次 webpack 函数，所以在 browser 的时候替换即可
+     */
     if (!options.isServer) {
-      config.resolve.alias['@sentry/node'] = '@sentry/browser'
+      config.resolve.alias['@sentry/node'] = '@sentry/browser';
     }
 
-    return config
+    return config;
   },
-})
+});
