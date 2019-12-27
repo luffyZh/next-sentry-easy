@@ -1,1 +1,0 @@
-{"name":"next-sentry-demo","version":"1.0.0","license":"ISC","scripts":{"start":"next","build":"next build","prod":"next start"},"dependencies":{"@sentry/browser":"^5.10.2","@sentry/node":"^5.10.2","next":"latest","react":"^16.8.6","react-dom":"^16.8.6"},"devDependencies":{"@zeit/next-source-maps":"latest"},"readme":"ERROR: No README data found!","_id":"next-sentry-demo@1.0.0"}
