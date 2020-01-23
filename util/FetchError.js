@@ -15,6 +15,7 @@ class FetchError extends Error {
     traceId && (this.traceId = traceId)
     userId && (this.userId = userId)
     this.date = new Date()
+    console.log(this)
   }
 }
 

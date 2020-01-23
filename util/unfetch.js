@@ -7,7 +7,7 @@ function dealStatus(res) {
     const err = new FetchError(res.url, {
       traceId: Math.random() * 10000, // create your application traceId
       userId: 26,
-      message: `${typeof window !== 'undefined' ? 'Window' : 'Server'} fetch error: ${res.status}`
+      message: `${typeof window !== 'undefined' ? 'Client' : 'Server'} fetch error - ${res.status}`
     })
     // This will work on both client and server sides in production.
     Sentry.captureException(err);
@@ -39,7 +39,7 @@ HTTP_METHOD.forEach(method => {
     };
 
     if (bodyData && data) {
-      opts.body = qs.stringify(filterObject(data, Boolean));
+      opts.body = JSON.stringify(data);
     }
 
     console.info('Request Url:', url);
