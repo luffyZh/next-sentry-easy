@@ -1,6 +1,12 @@
-const doAsyncWork = () => Promise.reject(new Error('Server Test 4'));
-doAsyncWork();
+import unfetch from '../../util/unfetch';
 
-const Test4 = () => <h1>Client Test 4</h1>;
+function HomePage({ user }) {
+  return <div>user count: {user.length}</div>
+}
 
-export default Test4;
+HomePage.getInitialProps = async () => {
+  const data = await unfetch.get('https://jsonplaceholder.typicode.com/user')
+  return { user: data }
+}
+
+export default HomePage

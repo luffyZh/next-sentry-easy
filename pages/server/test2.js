@@ -1,4 +1,4 @@
-const Test2 = () => <h1>Client Test 2</h1>;
+const Test2 = () => <h1>Server Test 2 - Promise Error</h1>;
 
 Test2.getInitialProps = () => Promise.reject(new Error('Server Test 2'));
 

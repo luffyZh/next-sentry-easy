@@ -1,6 +1,9 @@
-const withSourceMaps = require('@zeit/next-source-maps');
+const withSourceMaps = require('@zeit/next-source-maps')
 
 module.exports = withSourceMaps({
+  env: {
+    SENTRY_DSN: 'http://e69fa8afd38e43e59fc3baf48ec0c681@localhost:9000/11'
+  },
   webpack: (config, options) => {
     /**
      * 在 _app.js 引入 @sentry/node 包，当项目运行的时候，如果是 SSR 渲染，
@@ -10,9 +13,9 @@ module.exports = withSourceMaps({
      * 分别运行一次 webpack 函数，所以在 browser 的时候替换即可
      */
     if (!options.isServer) {
-      config.resolve.alias['@sentry/node'] = '@sentry/browser';
+      config.resolve.alias['@sentry/node'] = '@sentry/browser'
     }
 
-    return config;
+    return config
   },
-});
+})
