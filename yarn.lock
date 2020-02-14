@@ -1012,9 +1012,10 @@
   version "4.2.2"
   resolved "https://registry.npm.taobao.org/@xtuc/long/download/@xtuc/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
 
-"@zeit/next-source-maps@latest":
-  version "0.0.3"
-  resolved "https://registry.npm.taobao.org/@zeit/next-source-maps/download/@zeit/next-source-maps-0.0.3.tgz#d62e93b4f5ccdd542c8530d21f60dd2757d98e3c"
+"@zeit/next-source-maps@0.0.4-canary.1":
+  version "0.0.4-canary.1"
+  resolved "https://registry.npm.taobao.org/@zeit/next-source-maps/download/@zeit/next-source-maps-0.0.4-canary.1.tgz#5051ff8425e5f615da2d21dd08a99284fbb63d7d"
+  integrity sha1-UFH/hCXl9hXaLSHdCKmShPu2PX0=
 
 accepts@~1.3.5:
   version "1.3.7"

@@ -1,4 +1,5 @@
-const withSourceMaps = require('@zeit/next-source-maps')
+const webpack = require('webpack')
+const withSourceMaps = require('@zeit/next-source-maps')()
 const SentryCliPlugin = require('@sentry/webpack-plugin')
 
 module.exports = withSourceMaps({
@@ -7,13 +8,18 @@ module.exports = withSourceMaps({
   },
   webpack: (config, { isServer, buildId }) => {
     config.plugins.push(
-      new SentryCliPlugin({
-        include: ['.next'],
-        ignore: ['node_modules', 'next.config.js'],
-        configFile: '.sentryclirc',
-        release: buildId,
-        urlPrefix: '~/_next'
-      })
+      ...[
+        new webpack.DefinePlugin({
+          'process.env.SENTRY_RELEASE': JSON.stringify(buildId)
+        }),
+        new SentryCliPlugin({
+          include: ['.next'],
+          ignore: ['node_modules', 'next.config.js'],
+          configFile: '.sentryclirc',
+          release: buildId,
+          urlPrefix: '~/_next'
+        })
+      ]
     )
     /**
      * 在 _app.js 引入 @sentry/node 包，当项目运行的时候，如果是 SSR 渲染，
