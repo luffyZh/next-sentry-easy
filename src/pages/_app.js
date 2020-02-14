@@ -5,8 +5,10 @@ import * as Sentry from '@sentry/node'
 
 Sentry.init({
   // Replace with your project's Sentry DSN
-  dsn: process.env.SENTRY_DSN
-})
+  dsn: process.env.SENTRY_DSN,
+  // release: process.env.SENTRY_RELEASE,
+  // enabled: process.env.NODE_ENV === 'production',
+});
 
 class MyApp extends App {
 

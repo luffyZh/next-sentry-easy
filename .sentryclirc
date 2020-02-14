@@ -1,0 +1,8 @@
+[defaults]
+url = http://localhost:9000/
+<!-- 此处可以从你的sentry.io的全路径看出，如：https://sentry.io/此处是你的org/此处是你的project/ -->
+org = luffyzh
+project = next-sentry-example
+
+[auth]
+token = 789ee798e82a49d3aca4e74b07a394269255224059ba4b48a4663d63521e8822

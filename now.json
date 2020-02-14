@@ -1,5 +1,5 @@
 {
   "version": 2,
-  "name": "next-sentry-demo",
+  "name": "next-sentry-easy",
   "builds": [{ "src": "package.json", "use": "@now/next" }]
 }
